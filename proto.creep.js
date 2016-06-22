@@ -2,16 +2,30 @@
 ** Checking essential states, such as carry energy or empty -> can work
 */
 
-Creep.prototype.repairWall = function(hits) {
+Creep.prototype.repair = function(wallHits) {
     
+	/*
     var walls = this.room.find( FIND_STRUCTURES, {
         filter: function(structure) {
-            return structure.structureType == 'constructedWall' && structure.hits < hits;
+            return structure.structureType == 'constructedWall' && structure.hits < wallHits;
+			return structure.structureType == 'road' && structure.hits < structure.hitsMax;
+        }
+    });
+	*/
+	
+	
+	
+	
+	/*
+	var roads = this.room.find( FIND_STRUCTURES, {
+        filter: function(structure) {
+            return structure.structureType == 'road' && structure.hits < structure.hitsMax;
         }
     });
     
     console.log('walls left to repair: ' + walls.length);
-    
+	console.log('roads left to repair: ' + roads.length);
+    */
     if(this.memory.canWork) {
         if(this.repair(walls[0]) == ERR_NOT_IN_RANGE) {
             this.moveTo(walls[0]);
@@ -21,14 +35,15 @@ Creep.prototype.repairWall = function(hits) {
     
 };
 
-Creep.prototype.refill = function() {
+Creep.prototype.refill = function(target) {
+	if (!target) { target = 0 };
     if(this.memory.canWork) {
         return;
     }
     if(this.carry.energy < this.carryCapacity) {
         var sources = this.room.find(FIND_SOURCES);
-            if(this.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                this.moveTo(sources[0]);
+            if(this.harvest(sources[target]) == ERR_NOT_IN_RANGE) {
+                this.moveTo(sources[target]);
             }
     }
 

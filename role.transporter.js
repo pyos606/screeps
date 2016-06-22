@@ -1,18 +1,14 @@
-var roleHarvester = {
+var roleTransporter = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-		if(!creep.memory.canWork) {
-			var containers = creep.room.find(FIND_STRUCTURES, 
-				{
-					filter: {structureType: STRUCTURE_CONTAINER}
-				});
-			if( containers[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
-				creep.moveTo(containers[0]);
-			}
-		}
-			
-		else {
+        if(!creep.memory.canWork) {
+            var sources = creep.room.find(RESOURCE_ENERGY);
+            if(creep.pickup(sources[0]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[0]);
+            }
+        }
+        else if(creep.memory.canWork){
             var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
@@ -23,12 +19,10 @@ var roleHarvester = {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
                 }
-            } else {
-				creep.moveTo(Game.spawns.Home);
-			}
+            }
         }
         
     }
-}
+};
 
-module.exports = roleHarvester;
+module.exports = roleTransporter;
