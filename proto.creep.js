@@ -1,4 +1,6 @@
-
+/* Basic methods for Creeps
+** Checking essential states, such as carry energy or empty -> can work
+*/
 
 Creep.prototype.repairWall = function(hits) {
     

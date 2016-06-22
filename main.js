@@ -39,7 +39,7 @@ module.exports.loop = function () {
     
 
     for(var name in Game.rooms) {
-        //console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
+        console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
     }
 
     for(var name in Game.creeps) {
@@ -47,7 +47,7 @@ module.exports.loop = function () {
 
         var creep = Game.creeps[name];
         
-        //check id they are empty
+        //check if they are empty
         if(!creep.canWork() && creep.memory.role != 'harvester') {
             creep.refill();
         };
