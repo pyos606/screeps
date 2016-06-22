@@ -30,18 +30,18 @@ module.exports.loop = function () {
         console.log('Spawning new harvester: ' + newName);
     }
     
-    if(upgraders.length < 1) {
-        var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+    if(upgraders.length < 7) {
+        var newName = Game.spawns.Home.createCreep([CARRY,MOVE], undefined, {role: 'upgrader'});
         console.log('Spawning new upgrader: ' + newName);
     }
     
-    if(builders.length < 2) {
+    if(builders.length < 0) {
         var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
         console.log('Spawning new builder: ' + newName);
     }
     
-    if(repairers.length < 0) {
-        var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairer'});
+    if(repairers.length < 1) {
+        var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer'});
         console.log('Spawning new repairer: ' + newName);
     }
 	
@@ -49,10 +49,15 @@ module.exports.loop = function () {
         var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'miner'});
         console.log('Spawning new miner: ' + newName);
     }
+	
+	if(transporters.length < 1) {
+        var newName = Game.spawns.Home.createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'transporter'});
+        console.log('Spawning new transporter: ' + newName);
+    }
     
 
     console.log('Room E23S28 has '+Game.rooms['E23S28'].energyAvailable+' energy');
-
+	
     for(var name in Game.creeps) {
         
 
@@ -76,21 +81,24 @@ module.exports.loop = function () {
 		if(creep.memory.role == 'transporter') {
                 roleTransporter.run(creep);
         }
-		/*
+		
         if(creep.memory.role == 'repairer') {
-            creep.repair(60000);
+            //creep.repair(Memory.toRepair[0]);
         }
-		*/
+		
     }
 	
+
+	
+	/*
 	var allRoadsAndWalls = Game.rooms['E23S28'].find( FIND_STRUCTURES, {
 		filter:function(structure) {
     		return structure.structureType == "road" || 
 				structure.structureType == "constructedWall";
 		}});
 	
-	console.log('Structures: ' + allRoadsAndWalls.length);
-	
+	console.log('Roads & Walls: ' + allRoadsAndWalls.length);
+	*/
 	
 	//console.log('Roads: ' + allRoadsAndWalls[road].length);
 }

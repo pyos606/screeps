@@ -24,7 +24,7 @@ var roleHarvester = {
                     creep.moveTo(targets[0]);
                 }
             } else {
-				creep.moveTo(Game.spawns.Home);
+				creep.moveTo(targets[0]);
 			}
         }
         
