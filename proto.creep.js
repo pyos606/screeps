@@ -2,45 +2,6 @@
 ** Checking essential states, such as carry energy or empty -> can work
 */
 
-Creep.prototype.repair = function(toRepair) {
-	
-	
-	/*
-	console.log('(from proto)Structure to Repair target: ' + toRepair);
-	
-	this.memory.toRepair = toRepair;
-    */
-	/*
-    var walls = this.room.find( FIND_STRUCTURES, {
-        filter: function(structure) {
-            return structure.structureType == 'constructedWall' && structure.hits < wallHits;
-			return structure.structureType == 'road' && structure.hits < structure.hitsMax;
-        }
-    });
-	*/
-	
-	
-	
-	
-	/*
-	var roads = this.room.find( FIND_STRUCTURES, {
-        filter: function(structure) {
-            return structure.structureType == 'road' && structure.hits < structure.hitsMax;
-        }
-    });
-    
-    console.log('walls left to repair: ' + walls.length);
-	console.log('roads left to repair: ' + roads.length);
-    */
-	/*
-    if(this.memory.canWork) {
-        if(this.memory.toRepair == ERR_NOT_IN_RANGE) {
-            this.moveTo(this.memory.toRepair);
-        }
-    }
-    */
-    
-};
 
 Creep.prototype.refill = function(target) {
 	if (!target) { target = 0 };
