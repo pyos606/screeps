@@ -34,8 +34,8 @@ module.exports.loop = function () {
         console.log('Spawning new harvester: ' + newName);
     }
     
-    if(upgraders.length < 7) {
-        var newName = Game.spawns.Home.createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+    if(upgraders.length < 6) {
+        var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
         console.log('Spawning new upgrader: ' + newName);
     }
     
@@ -50,17 +50,17 @@ module.exports.loop = function () {
     }
 	
 	if(miners.length < 1) {
-        var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: 'miner'});
+        var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], 'Jozsi', {role: 'miner'});
         console.log('Spawning new miner: ' + newName);
     }
 	
 	if(miners2.length < 1) {
-        var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'miner2'});
+        var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], 'Bela', {role: 'miner2'});
         console.log('Spawning new miner2: ' + newName);
     }
 	
 	if(transporters.length < 2) {
-        var newName = Game.spawns.Home.createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'transporter'});
+        var newName = Game.spawns.Home.createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transporter'});
         console.log('Spawning new transporter: ' + newName);
     }
     

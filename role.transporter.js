@@ -16,12 +16,12 @@ var roleTransporter = {
 			
 			
             if(sources.length > 0) {
-				if(_.sum(sources[0].store) > _.sum(sources[2].store)) {
+				if(_.sum(sources[0].store) >= _.sum(sources[2].store)) {
 					var t = 0;
 				} else {
 					var t = 2;
 				}
-				console.log('Transporter goes here: ' + t);
+				console.log('Energy picked form container: ' + t);
 			
                 if(sources[t].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(sources[t]);
@@ -30,7 +30,7 @@ var roleTransporter = {
         } else {
 			var targets = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
+					return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER ) && structure.energy < structure.energyCapacity;
 				}
 			})
 			if(targets.length > 0) {
