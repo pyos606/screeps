@@ -3,6 +3,7 @@ var roleBuilder = require('role.builder');
 var roleUpgrader = require('role.upgrader');
 var protoCreep = require('proto.creep');
 var roleMiner = require('role.miner');
+var roleMiner2 = require('role.miner2');
 var roleTransporter = require('role.transporter');
 
 module.exports.loop = function () {
@@ -21,6 +22,9 @@ module.exports.loop = function () {
 	
 	var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     console.log('Miners: ' + miners.length);
+	
+	var miners2 = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner2');
+    console.log('Miners2: ' + miners2.length);
 	
 	var transporters = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
     console.log('Transporters: ' + transporters.length);
@@ -46,8 +50,13 @@ module.exports.loop = function () {
     }
 	
 	if(miners.length < 1) {
-        var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE], undefined, {role: 'miner'});
+        var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: 'miner'});
         console.log('Spawning new miner: ' + newName);
+    }
+	
+	if(miners2.length < 1) {
+        var newName = Game.spawns.Home.createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'miner2'});
+        console.log('Spawning new miner2: ' + newName);
     }
 	
 	if(transporters.length < 2) {
@@ -77,6 +86,9 @@ module.exports.loop = function () {
         }
 		if(creep.memory.role == 'miner') {
                 roleMiner.run(creep);
+        }
+		if(creep.memory.role == 'miner2') {
+                roleMiner2.run(creep);
         }
 		if(creep.memory.role == 'transporter') {
                 roleTransporter.run(creep);

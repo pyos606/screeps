@@ -8,9 +8,23 @@ var roleTransporter = {
 					return (structure.structureType == STRUCTURE_CONTAINER);
 				}
 			})
+			/*
+			console.log('sources[0].store.length: ' + _.sum(sources[0].store));
+			console.log('sources[1].store.length: ' + _.sum(sources[1].store));
+			console.log('sources[2].store.length: ' + _.sum(sources[2].store));
+			*/
+			
+			
             if(sources.length > 0) {
-                if(sources[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0]);
+				if(_.sum(sources[0].store) > _.sum(sources[2].store)) {
+					var t = 0;
+				} else {
+					var t = 2;
+				}
+				console.log('Transporter goes here: ' + t);
+			
+                if(sources[t].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(sources[t]);
                 }
             }
         } else {

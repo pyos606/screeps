@@ -7,8 +7,18 @@ var roleHarvester = {
 				{
 					filter: {structureType: STRUCTURE_CONTAINER}
 				});
-			if( containers[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
-				creep.moveTo(containers[0]);
+			console.log('containers[0].store.length: ' + containers[0].store.length);
+			console.log('containers[1].store.length: ' + containers[1].store.length);
+			console.log('containers[2].store.length: ' + containers[2].store.length);
+			
+			if(containers[0].store.length > containers[2].store.length) {
+				var t = 0;
+			}
+			else {
+				var t = 1;
+			}
+			if( containers[t].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
+				creep.moveTo(containers[t]);
 			}
 		}
 			

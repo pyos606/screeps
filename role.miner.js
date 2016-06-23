@@ -23,7 +23,7 @@ var roleMiner = {
 			
 		}
 		*/
-		creep.repair(containers[0]);
+
 		creep.transfer(containers[0], RESOURCE_ENERGY);
 	}
 }
