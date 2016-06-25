@@ -30,14 +30,17 @@ var roleTransporter = {
         } else {
 			var targets = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || (structure.structureType == STRUCTURE_TOWER && structure.energy < 400 )  ) && structure.energy < structure.energyCapacity ;
+					return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || (structure.structureType == STRUCTURE_TOWER && structure.energy < 400 ) ) && structure.energy < structure.energyCapacity;
 				}
 			})
 			if(targets.length > 0) {
 				if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 				   creep.moveTo(targets[0]);
 				}
+				
 			} else {
+				var total = _.sum(Game.rooms.E23S28.storage.store);
+				console.log('Storage: ' + total);
 				var containers = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER);
@@ -45,6 +48,10 @@ var roleTransporter = {
 				if (containers.length > 0) {
 					if(creep.transfer(containers[1], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					   creep.moveTo(containers[1]);
+					}
+				} else {
+					if(creep.transfer(Game.rooms.E23S28.storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(Game.rooms.E23S28.storage);
 					}
 				}	
 			

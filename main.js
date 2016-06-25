@@ -38,7 +38,7 @@ module.exports.loop = function () {
         console.log('Spawning new harvester: ' + newName);
     }
     
-    if(upgraders.length < 5) {
+    if(upgraders.length < 3) {
         var newName = Game.spawns.Home.createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'upgrader'});
         console.log('Spawning new upgrader: ' + newName);
     }

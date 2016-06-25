@@ -46,8 +46,8 @@ var roleUpgrader = {
 			})
 			if(targets.length > 0) {
 				console.log('Wall to repair: ' + targets.length);
-				if(creep.repair(targets[1]) == ERR_NOT_IN_RANGE ) {
-					creep.moveTo(targets[1]);
+				if(creep.repair(targets[0]) == ERR_NOT_IN_RANGE ) {
+					creep.moveTo(targets[0]);
 				}
 			} else {
 				roleUpgrader.run(creep);
