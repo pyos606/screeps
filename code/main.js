@@ -1,13 +1,13 @@
-var roleHarvester = require('code/role.harvester');
-var roleBuilder = require('code/role.builder');
-var roleUpgrader = require('code/role.upgrader');
-var protoCreep = require('code/proto.creep');
-var roleMiner = require('code/role.miner');
-var roleMiner2 = require('code/role.miner2');
-var roleTransporter = require('code/role.transporter');
-var roleTower = require('code/role.tower');
-var roleLink = require('code/role.link');
-var roleStorer = require('code/role.storer');
+var roleHarvester = require('roles/role.harvester');
+var roleBuilder = require('roles/role.builder');
+var roleUpgrader = require('roles/role.upgrader');
+var protoCreep = require('roles/proto.creep');
+var roleMiner = require('roles/role.miner');
+var roleMiner2 = require('roles/role.miner2');
+var roleTransporter = require('roles/role.transporter');
+var roleTower = require('roles/role.tower');
+var roleLink = require('roles/role.link');
+var roleStorer = require('roles/role.storer');
 
 module.exports.loop = function () {
 
