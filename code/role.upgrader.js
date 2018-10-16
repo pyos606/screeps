@@ -1,4 +1,4 @@
-var roleTransporter = require('code/role.transporter');
+var roleTransporter = require('role.transporter');
 
 var roleUpgrader = {
 
