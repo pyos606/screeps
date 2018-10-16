@@ -12,12 +12,12 @@ var roleMiner = {
                     filter: {structureType: STRUCTURE_CONTAINER}
                 });
 
-            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if(targets.length) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0]);
-                }
-            }
+            // var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            // if(targets.length) {
+            //     if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
+            //         creep.moveTo(targets[0]);
+            //     }
+            // }
 
             //console.log('Container hits: ' + containers[0].hits + ', Max: ' + containers[0].hitsMax);
 
