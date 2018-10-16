@@ -1,2 +1,2 @@
-Test scripts for screps learning
+Test scripts for screeps learning
 
