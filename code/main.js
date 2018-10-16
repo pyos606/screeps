@@ -38,12 +38,12 @@ module.exports.loop = function () {
     var storers = _.filter(Game.creeps, (creep) => creep.memory.role === 'storer');
     console.log('Storers: ' + storers.length);
 
-    if (harvesters.length < 1) {
+    if (harvesters.length < 2) {
         var harvester = Game.spawns.Home.createCreep([CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + harvester);
     }
 
-    if (upgraders.length < 8) {
+    if (upgraders.length < 2) {
         var upgrader = Game.spawns.Home.createCreep([WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE],
             undefined, {role: 'upgrader'});
         console.log('Spawning new upgrader: ' + upgrader);
