@@ -5,7 +5,7 @@ var roleLink = {
         var mainLink = Game.spawns.Home.room.lookForAt('structure', 12, 14)[0];
         var upgradeLink = Game.spawns.Home.room.lookForAt('structure', 12, 14)[0];
 
-        if(mainLink.energy == mainLink.energyCapacity) {
+        if(mainLink.energy === mainLink.energyCapacity) {
             transferEnergy(upgradeLink);
         }
     },
