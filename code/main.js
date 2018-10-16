@@ -39,7 +39,7 @@ module.exports.loop = function () {
     console.log('Storers: ' + storers.length);
 
     if (harvesters.length < 1) {
-        var harvester = Game.spawns.Home.createCreep([WORK, CARRY, MOVE], undefined, {role: 'harvester'});
+        var harvester = Game.spawns.Home.createCreep([CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + harvester);
     }
 
@@ -142,18 +142,24 @@ module.exports.loop = function () {
 
 
     }
+    try {
+        roleTower.defend('E2N22');
+        roleTower.repair('E2N22');
+    }
+    catch (e) {
+        console.log('Tower error: ' + e.messageerror);
+    }
 
-// 	roleTower.defend('E2N22');
-// 	roleTower.repair('E2N22');
-
-
-// 	roleLink.refillMain();
-
-// 	roleLink.transferUpgrade();
-
+    try {
+        roleLink.refillMain();
+        roleLink.transferUpgrade();
+    }
+    catch (e) {
+        console.log('Link error: ' + e.messageerror);
+    }
 
     /*
-    var allRoadsAndWalls = Game.rooms['E23S28'].find( FIND_STRUCTURES, {
+    var allRoadsAndWalls = Game.rooms['E2N22'].find( FIND_STRUCTURES, {
         filter:function(structure) {
             return structure.structureType == "road" ||
                 structure.structureType == "constructedWall";

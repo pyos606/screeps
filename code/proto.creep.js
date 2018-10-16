@@ -10,7 +10,7 @@ Creep.prototype.refill = function(target) {
     }
     if(this.carry.energy < this.carryCapacity) {
         var sources = this.room.find(FIND_SOURCES);
-        if(this.harvest(sources[target]) == ERR_NOT_IN_RANGE) {
+        if(this.harvest(sources[target]) === ERR_NOT_IN_RANGE) {
             this.moveTo(sources[target]);
         }
     }
@@ -22,17 +22,17 @@ Creep.prototype.isEmpty = function() {
     if(this.carry.energy > 0) {
         return false;
     }
-    if(this.carry.energy == 0) {
+    if(this.carry.energy === 0) {
         return true;
     }
 }
 
 
 Creep.prototype.isFull = function() {
-    if(this.carry.energy == 0) {
+    if(this.carry.energy === 0) {
         return false;
     }
-    if(this.carry.energy == this.carryCapacity) {
+    if(this.carry.energy === this.carryCapacity) {
         return true;
     }
 }
