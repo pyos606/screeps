@@ -4,18 +4,18 @@
 
 
 Creep.prototype.refill = function(target) {
-	if (!target) { target = 0 };
+    if (!target) { target = 0 };
     if(this.memory.canWork) {
         return;
     }
     if(this.carry.energy < this.carryCapacity) {
         var sources = this.room.find(FIND_SOURCES);
-            if(this.harvest(sources[target]) == ERR_NOT_IN_RANGE) {
-                this.moveTo(sources[target]);
-            }
+        if(this.harvest(sources[target]) == ERR_NOT_IN_RANGE) {
+            this.moveTo(sources[target]);
+        }
     }
 
-    
+
 }
 
 Creep.prototype.isEmpty = function() {
@@ -50,7 +50,7 @@ Creep.prototype.canWork = function() {
 
 
 var protoCreep = {
-    
+
 };
 
 module.exports = protoCreep;

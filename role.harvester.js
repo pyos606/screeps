@@ -2,43 +2,62 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-		if(!creep.memory.canWork) {
-			var containers = creep.room.find(FIND_STRUCTURES, 
-				{
-					filter: {structureType: STRUCTURE_CONTAINER}
-				});
-			console.log('containers[0].store.length: ' + containers[0].store.length);
-			console.log('containers[1].store.length: ' + containers[1].store.length);
-			console.log('containers[2].store.length: ' + containers[2].store.length);
-			
-			if(containers[0].store.length > containers[2].store.length) {
-				var t = 0;
-			}
-			else {
-				var t = 1;
-			}
-			if( containers[t].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
-				creep.moveTo(containers[t]);
-			}
-		}
-			
-		else {
+        creep.say('Harvester')
+        if(!creep.memory.canWork) {
+            //  creep.refill(0);
+            var containers = creep.room.find(FIND_STRUCTURES,
+                {
+                    filter: {structureType: STRUCTURE_CONTAINER}
+                });
+// 			console.log('Creep cannot work');
+// 			console.log('containers[0].store.length: ' + containers[0].store.length);
+            //console.log('containers[2].store.length: ' + containers[2].store.length);
+
+// 			if(_.sum(containers[0].store) >= _.sum(containers[1].store)) {
+// 				var t = 0;
+// 			}
+// 			else {
+// 				var t = 1;
+// 			}
+
+            var t = 0;
+
+            if( containers[0].transfer(creep, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
+                creep.moveTo(containers[0]);
+            }
+        }
+
+        else {
             var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.energy < structure.energyCapacity;
-                    }
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN
+                        || (structure.structureType == STRUCTURE_TOWER && structure.energy < 600 ) )
+                        && structure.energy < structure.energyCapacity;
+                }
             });
+
             if(targets.length > 0) {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
                 }
-            } else {
-				creep.moveTo(targets[0]);
-			}
+            }
         }
-        
-    }
+
+    },
+
+    findTarget: function(creep, type) {
+
+        var target = creep.room.find(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return (structure.structureType == type);
+            }
+        })
+        if (target.length > 0) {
+            return target[0];
+        } else {
+            return false;
+        }
+    },
 }
 
 module.exports = roleHarvester;
